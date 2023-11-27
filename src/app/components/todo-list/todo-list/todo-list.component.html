@@ -1,0 +1,30 @@
+<h4>TO-DO LIST</h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Description</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let task of toDoList">
+      <td>{{ task.description }}</td>
+      <td>{{ task.status }}</td>
+      <td>
+        <button class="btn btn-primary" (click)="editTask(task)">
+          {{ task.inEditMode ? "Cancel" : "Edit" }}
+        </button>
+
+        <button
+          [disabled]="task.inEditMode"
+          class="btn btn-warning"
+          (click)="deleteTaskConfirmation(task)"
+        >
+          Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
